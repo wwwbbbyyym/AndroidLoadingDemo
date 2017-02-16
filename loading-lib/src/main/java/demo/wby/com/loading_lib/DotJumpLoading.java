@@ -44,16 +44,15 @@ public class DotJumpLoading extends View {
     }
 
     public DotJumpLoading(Context context, AttributeSet attrs) {
-        this(context, null, 0);
+        this(context, attrs, 0);
     }
-
 
     public DotJumpLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DotJump);
 
         type = typedArray.getString(R.styleable.DotJump_type);
-        if (!type.equals("jump") && !type.equals("zoom"))
+        if (type == null || (!type.equals("jump") && !type.equals("zoom")))
             type = "zoom";
         dotCount = typedArray.getInt(R.styleable.DotJump_dotCount, dotCount);
         dotColor = typedArray.getInt(R.styleable.DotJump_dotColor, Color.WHITE);
